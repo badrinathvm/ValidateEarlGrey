@@ -92,6 +92,7 @@
 		1B6E7C9F23710ADE00BDF41A = {
 			isa = PBXGroup;
 			children = (
+				1B6E7CDD2371138200BDF41A /* ValidateEarlGreySwiftBridgingHeader.h */,
 				1B6E7CAA23710ADE00BDF41A /* ValidateEarlGrey */,
 				1B6E7CC123710ADF00BDF41A /* ValidateEarlGreyTests */,
 				1B6E7CCC23710ADF00BDF41A /* ValidateEarlGreyUITests */,
@@ -139,7 +140,6 @@
 			children = (
 				1B6E7CDB23710BBB00BDF41A /* EarlGrey.swift */,
 				1B6E7CCD23710ADF00BDF41A /* ValidateEarlGreyUITests.swift */,
-				1B6E7CDD2371138200BDF41A /* ValidateEarlGreySwiftBridgingHeader.h */,
 				1B6E7CCF23710ADF00BDF41A /* Info.plist */,
 			);
 			path = ValidateEarlGreyUITests;
@@ -627,6 +627,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.badrinath.ValidateEarlGreyUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = ./ValidateEarlGreySwiftBridgingHeader.h;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = ValidateEarlGrey;
@@ -647,6 +648,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.badrinath.ValidateEarlGreyUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = ./ValidateEarlGreySwiftBridgingHeader.h;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = ValidateEarlGrey;
