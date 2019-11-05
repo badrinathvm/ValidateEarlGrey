@@ -2,22 +2,9 @@
 # platform :ios, '9.0'
 
 target 'ValidateEarlGrey' do
-  # Comment the next line if you don't want to use dynamic frameworks
-  use_frameworks!
+  pod 'EarlGreyApp', '2.0.0-rc'
+end
 
-  pod 'EarlGreyApp', '2.0.0'
-
-  # Pods for ValidateEarlGrey
-
-  target 'ValidateEarlGreyTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-  target 'ValidateEarlGreyUITests' do
-    inherit! :search_paths
-    # Pods for testing
-  pod 'EarlGreyTest', '2.0.0'
-  end
-
+target 'ValidateEarlGreyUITests' do
+  pod 'EarlGreyTest', '2.0.0-rc'
 end

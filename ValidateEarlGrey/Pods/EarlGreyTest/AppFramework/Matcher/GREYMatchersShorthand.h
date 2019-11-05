@@ -119,7 +119,7 @@ GREY_EXPORT id<GREYMatcher> grey_selected(void);
 /** Shorthand for GREYMatchers::matcherForUserInteractionEnabled. */
 GREY_EXPORT id<GREYMatcher> grey_userInteractionEnabled(void);
 
-/** Shorthand for GREYMatchers::matcherForLayoutConstraints:toReferenceElementMatching:. */
+/** Shorthand for GREYMatchers::matcherForConstraints:toReferenceElementMatching:. */
 GREY_EXPORT id<GREYMatcher> grey_layout(NSArray *constraints,
                                         id<GREYMatcher> referenceElementMatcher);
 
@@ -150,7 +150,7 @@ GREY_EXPORT id<GREYMatcher> grey_greaterThan(id value);
 /** Shorthand for GREYMatchers::matcherForScrolledToContentEdge:. */
 GREY_EXPORT id<GREYMatcher> grey_scrolledToContentEdge(GREYContentEdge edge);
 
-/** Shorthand for GREYMatchers::matcherForNegation:. */
+/** Shorthand macro for GREYNot::initWithMatcher:. */
 GREY_EXPORT id<GREYMatcher> grey_not(id<GREYMatcher> matcher);
 
 /** Shorthand for GREYMatchers::matcherForTextFieldValue:. */

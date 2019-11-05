@@ -1,0 +1,1 @@
+../../../EarlGreyTest/AppFramework/Core/GREYElementInteraction+Private.h

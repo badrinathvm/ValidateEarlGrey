@@ -31,7 +31,6 @@
 #import "EarlGreyImpl+XCUIApplication.h"
 #import "GREYElementInteractionErrorHandler.h"
 #import "GREYElementInteractionProxy.h"
-#import "GREYRemoteExecutor.h"
 #import "GREYDefaultFailureHandler.h"
 #import "EDOClientService.h"
 
@@ -56,19 +55,6 @@ static inline id<GREYFailureHandler> GREYGetCurrentFailureHandler() {
 }
 
 @implementation EarlGreyImpl
-
-/**
- *  Executes the specified @block in a remote executor background queue.
- *
- *  @param block The block to run in aremote executor background queue.
- */
-static BOOL ExecuteSyncBlockInBackgroundQueue(BOOL (^block)(void)) {
-  __block BOOL success;
-  GREYExecuteSyncBlockInBackgroundQueue(^{
-    success = block();
-  });
-  return success;
-};
 
 + (void)load {
   // This needs to be done in load as there may be calls to GREYAssert APIs that access the failure
@@ -102,10 +88,9 @@ static BOOL ExecuteSyncBlockInBackgroundQueue(BOOL (^block)(void)) {
 }
 
 - (BOOL)rotateDeviceToOrientation:(UIDeviceOrientation)deviceOrientation error:(NSError **)error {
-  __block GREYError *rotationError = nil;
-  BOOL success = ExecuteSyncBlockInBackgroundQueue(^{
-    return [GREYSyntheticEvents rotateDeviceToOrientation:deviceOrientation error:&rotationError];
-  });
+  GREYError *rotationError = nil;
+  BOOL success = [GREYSyntheticEvents rotateDeviceToOrientation:deviceOrientation
+                                                          error:&rotationError];
   if (!success) {
     if (error) {
       *error = rotationError;
@@ -117,10 +102,8 @@ static BOOL ExecuteSyncBlockInBackgroundQueue(BOOL (^block)(void)) {
 }
 
 - (BOOL)dismissKeyboardWithError:(NSError **)error {
-  __block GREYError *dismissalError = nil;
-  BOOL success = ExecuteSyncBlockInBackgroundQueue(^{
-    return [GREYKeyboard dismissKeyboardWithoutReturnKeyWithError:&dismissalError];
-  });
+  GREYError *dismissalError = nil;
+  BOOL success = [GREYKeyboard dismissKeyboardWithoutReturnKeyWithError:&dismissalError];
   if (!success) {
     NSString *errorDescription =
         [NSString stringWithFormat:@"Failed to dismiss keyboard since it was not showing. "
@@ -167,9 +150,9 @@ static BOOL ExecuteSyncBlockInBackgroundQueue(BOOL (^block)(void)) {
                            @"Deeplink open action failed since Open Button on the app "
                            @"dialog for the deeplink not present.");
   }
-  // this is needed otherwise failed tests will hang until failure.
-  [application activate];
-  return NO;
+    // this is needed otherwise failed tests will hang until failure.
+    [application activate];
+    return NO;
 #else
   NSString *errorDescription =
       @"Cannot open the deeplink because it is not supported with the current system version.";
@@ -185,12 +168,12 @@ static BOOL ExecuteSyncBlockInBackgroundQueue(BOOL (^block)(void)) {
 }
 
 - (BOOL)shakeDeviceWithError:(NSError **)error {
-  __block GREYError *shakeDeviceError = nil;
-  BOOL success = ExecuteSyncBlockInBackgroundQueue(^{
-    return [GREYSyntheticEvents shakeDeviceWithError:&shakeDeviceError];
-  });
-  if (!success && error) {
-    *error = shakeDeviceError;
+  GREYError *shakeDeviceError = nil;
+  BOOL success = [GREYSyntheticEvents shakeDeviceWithError:&shakeDeviceError];
+  if (!success) {
+    if (error) {
+      *error = shakeDeviceError;
+    }
   }
   return success;
 }
@@ -201,10 +184,8 @@ static BOOL ExecuteSyncBlockInBackgroundQueue(BOOL (^block)(void)) {
 }
 
 - (BOOL)isKeyboardShownWithError:(NSError **)error {
-  __block GREYError *keyboardShownError = nil;
-  BOOL keyboardShown = ExecuteSyncBlockInBackgroundQueue(^{
-    return [GREYKeyboard keyboardShownWithError:&keyboardShownError];
-  });
+  GREYError *keyboardShownError = nil;
+  BOOL keyboardShown = [GREYKeyboard keyboardShownWithError:&keyboardShownError];
   // Handle keyboardShownError if any, if the app failed to idle.
   if (keyboardShownError) {
     if (error) {

@@ -1,12 +1,12 @@
 PODS:
-  - EarlGreyApp (2.0.0)
-  - EarlGreyTest (2.0.0):
+  - EarlGreyApp (2.0.0-rc)
+  - EarlGreyTest (2.0.0-rc):
     - eDistantObject
   - eDistantObject (0.9.0)
 
 DEPENDENCIES:
-  - EarlGreyApp (= 2.0.0)
-  - EarlGreyTest (= 2.0.0)
+  - EarlGreyApp (= 2.0.0-rc)
+  - EarlGreyTest (= 2.0.0-rc)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -15,10 +15,10 @@ SPEC REPOS:
     - eDistantObject
 
 SPEC CHECKSUMS:
-  EarlGreyApp: e189faf4f55a190ebc4e1c3b2c1d155c2cd2c946
-  EarlGreyTest: fe152c2dd32607996f518eb097223b16c94a1806
+  EarlGreyApp: 69b6e5bdb27e23bbc6e2adce14d8dbf8622aaca3
+  EarlGreyTest: 304bacd488154e89b1b9e8487ae797cca1e83a0e
   eDistantObject: 53a19cc9247f8351836a115c6f05308775dd878d
 
-PODFILE CHECKSUM: 4945e198b25489e441b4a7bad5549f89e76eb056
+PODFILE CHECKSUM: 2794ccdfb6ff03ed0aab13b6660b7679579a826a
 
 COCOAPODS: 1.7.5

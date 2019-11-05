@@ -14,11 +14,11 @@
 // limitations under the License.
 //
 
-#import <Foundation/Foundation.h>
+#import "GREYTraversal.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface GREYTraversalBFS : NSObject
+@interface GREYTraversalBFS : GREYTraversal
 
 /**
  *  Instance method that returns the next object from the hierarchy in a Breadth First Search

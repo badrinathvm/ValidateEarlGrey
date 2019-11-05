@@ -20,8 +20,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class GREYLayoutConstraint;
-
 @protocol GREYMatcher;
 
 /**
@@ -118,10 +116,6 @@ NS_ASSUME_NONNULL_BEGIN
  *  Matcher for UI element whose percent visible area (of its accessibility frame) exceeds the
  *  given @c percent.
  *
- *  @note This is an expensive check (can take around 250ms for a simple 100 x 100 pt view). Do not
- *        use it in your selectElementWithMatcher statement for matching an element but use it to
- *        assert on a matched element's state.
- *
  *  @param percent The percent visible area that the UI element being matched has to be visible.
  *                 Allowed values for @c percent are [0,1] inclusive.
  *
@@ -135,21 +129,13 @@ NS_ASSUME_NONNULL_BEGIN
  *  that are more than @c kElementSufficientlyVisiblePercentage (75 %) visible areawise to be
  *  sufficiently visible.
  *
- *  @note This is an expensive check (can take around 250ms for a simple 100 x 100 pt view). Do not
- *        use it in your selectElementWithMatcher statement for matching an element but use it to
- *        assert on a matched element's state.
- *
- *  @return A matcher initialized with a visibility percentage that confirms an element is
+ *  @return A matcher intialized with a visibility percentage that confirms an element is
  *          sufficiently visible.
  */
 + (id<GREYMatcher>)matcherForSufficientlyVisible;
 
 /**
  *  Matcher for UI element that is not visible to the user at all i.e. it has a zero visible area.
- *
- *  @note This is an expensive check (can take around 250ms for a simple 100 x 100 pt view). Do not
- *        use it in your selectElementWithMatcher statement for matching an element but use it to
- *        assert on a matched element's state.
  *
  *  @return A matcher for verifying if an element is not visible.
  */
@@ -340,8 +326,8 @@ NS_ASSUME_NONNULL_BEGIN
  *  @code
  *  GREYLayoutConstraint *constraint1 = [GREYLayoutConstraint layoutConstraintWithAttribute ... ];
  *  GREYLayoutConstraint *constraint2 = [GREYLayoutConstraint layoutConstraintForDirection ... ];
- *  id<GREYMatcher> *matcher = [GREYMatcher matcherForLayoutConstraints:@[ constraint1, constraint2]
- *                                           toReferenceElementMatching:aReferenceElementMatcher];
+ *  id<GREYMatcher> *matcher = [GREYMatcher matcherForConstraints:@[ constraint1, constraint2 ]
+ *                                toReferenceElementMatching:aReferenceElementMatcher];
  *  [EarlGrey selectElementWithMatcher ...] assertWithMatcher:matcher];
  *  @endcode
  *
@@ -355,8 +341,8 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @return A matcher to verify the GREYLayoutConstraints on a UI element.
  */
-+ (id<GREYMatcher>)matcherForLayoutConstraints:(NSArray<GREYLayoutConstraint *> *)constraints
-                    toReferenceElementMatching:(id<GREYMatcher>)referenceElementMatcher;
++ (id<GREYMatcher>)matcherForConstraints:(NSArray *)constraints
+              toReferenceElementMatching:(id<GREYMatcher>)referenceElementMatcher;
 
 /**
  *  Matcher primarily for asserting that the element is @c nil or not found.
@@ -453,15 +439,6 @@ NS_ASSUME_NONNULL_BEGIN
  *  @return A matcher that matches the value inside a UITextField.
  */
 + (id<GREYMatcher>)matcherForTextFieldValue:(NSString *)value;
-
-/**
- *  A matcher to check the negation of the result of @c matcher.
- *
- *  @param matcher A matcher whose result will be negated.
- *
- *  @return An matcher that negates the result of @c matcher.
- */
-+ (id<GREYMatcher>)matcherForNegation:(id<GREYMatcher>)matcher;
 
 @end
 

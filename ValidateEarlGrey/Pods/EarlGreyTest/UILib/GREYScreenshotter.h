@@ -51,10 +51,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (UIImage *)takeScreenshot;
 
 /**
- *  @return A @c UIImage similar to -takeScreenshot method optionally including the status bar if
- *          @includeStatusBar is @c YES.
- *
- *  @remark Will create a new local status bar if iOS 13+.
+ *  @return A UIImage similar to the takeScreenshot method, but which includes the Status Bar.
  */
 + (UIImage *)screenshotIncludingStatusBar:(BOOL)includeStatusBar;
 

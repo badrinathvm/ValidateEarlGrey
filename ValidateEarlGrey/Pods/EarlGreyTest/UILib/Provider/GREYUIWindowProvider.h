@@ -36,8 +36,6 @@
  *
  *  @param includeStatusBar Should the status bar be included in the list of windows.
  *
- *  @remark Will create a local status bar if iOS 13+.
- *
  *  @return A GREYUIWindowProvider instance populated by all windows currently
  *          registered with the app.
  */
@@ -67,8 +65,6 @@
  *
  *  @param includeStatusBar Should the status bar be included in the list of windows.
  *
- *  @remark Will create a local status bar if iOS 13+.
- *
  *  @return A GREYUIWindowProvider instance populated by all windows currently
  *          registered with the app.
  */
@@ -79,8 +75,6 @@
  *
  *  @param includeStatusBar Include the status bar in the window hierarchy.
  *
- *  @remark Will create a local status bar if iOS 13+.
- *
  *  @return A set of all application windows ordered by window-level from back to front.
  */
 + (NSArray *)allWindowsWithStatusBar:(BOOL)includeStatusBar;
@@ -88,6 +82,7 @@
 #pragma mark - GREYProvider
 
 /**
+ *
  *  @return An enumerator for @c windows populating the window provider.
  */
 - (NSEnumerator *)dataEnumerator;

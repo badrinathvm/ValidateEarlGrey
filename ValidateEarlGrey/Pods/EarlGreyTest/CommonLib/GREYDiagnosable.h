@@ -14,22 +14,15 @@
 // limitations under the License.
 //
 
-#import "GREYDefines.h"
+#import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
-
-/**
- *  @return Prefixed @c diagnosticsID for "core" matcher, action, and assertion.
- */
-NSString *GREYCorePrefixedDiagnosticsID(NSString *diagnosticsID);
 
 /** Private protocol for diagnostics purpose. */
 @protocol GREYDiagnosable <NSObject>
 
-@optional
 /**
  *  Identifier with which diagnosable objects will have their diagnostics information associated.
- *  This is for internal use only. Please Do NOT override this externally.
  */
 - (NSString *)diagnosticsID;
 

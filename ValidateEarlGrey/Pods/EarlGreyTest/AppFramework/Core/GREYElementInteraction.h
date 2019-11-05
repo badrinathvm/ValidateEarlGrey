@@ -16,8 +16,6 @@
 
 #import "GREYInteraction.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
 /**
  *  Interface for creating an interaction with a UI element. If no datasource is set,
  *  a default datasource is used. The default datasource provides access to the entire UI element
@@ -45,5 +43,3 @@ NS_ASSUME_NONNULL_BEGIN
 - (id<GREYInteraction>)includeStatusBar;
 
 @end
-
-NS_ASSUME_NONNULL_END

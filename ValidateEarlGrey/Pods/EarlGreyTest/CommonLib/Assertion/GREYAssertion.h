@@ -16,12 +16,10 @@
 
 #import <Foundation/Foundation.h>
 
-#import "GREYDiagnosable.h"
-
 /**
  *  Protocol to which EarlGrey assertion classes must conform.
  */
-@protocol GREYAssertion <GREYDiagnosable>
+@protocol GREYAssertion <NSObject>
 
 /**
  *  Checks whether the assertion is valid for the provided @c element, throwing an exception if the

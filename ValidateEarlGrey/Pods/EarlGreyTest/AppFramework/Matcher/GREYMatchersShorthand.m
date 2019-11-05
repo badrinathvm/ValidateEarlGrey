@@ -19,6 +19,7 @@
 #import "GREYAllOf.h"
 #import "GREYAnyOf.h"
 #import "GREYMatchers.h"
+#import "GREYNot.h"
 #import "GREYMatcher.h"
 
 #if !defined(GREY_DISABLE_SHORTHAND) || !(GREY_DISABLE_SHORTHAND)
@@ -132,8 +133,8 @@ id<GREYMatcher> grey_userInteractionEnabled(void) {
 }
 
 id<GREYMatcher> grey_layout(NSArray *constraints, id<GREYMatcher> referenceElementMatcher) {
-  return [GREYMatchers matcherForLayoutConstraints:constraints
-                        toReferenceElementMatching:referenceElementMatcher];
+  return [GREYMatchers matcherForConstraints:constraints
+                  toReferenceElementMatching:referenceElementMatcher];
 }
 
 id<GREYMatcher> grey_nil(void) { return [GREYMatchers matcherForNil]; }
@@ -201,7 +202,7 @@ id<GREYMatcher> grey_allOfMatchers(NSArray<GREYMatcher> *matchers) {
 }
 
 id<GREYMatcher> grey_not(id<GREYMatcher> matcher) {
-  return [GREYMatchers matcherForNegation:matcher];
+  return [[GREYNot alloc] initWithMatcher:matcher];
 }
 
 #endif  // GREY_DISABLE_SHORTHAND
